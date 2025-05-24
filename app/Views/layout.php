@@ -1,8 +1,20 @@
 <?php
 $hlm = "Home";
+$uri = uri_string();
+$hlmList = [
+  '' => 'Home',
+  'produk' => 'Produk',
+  'keranjang' => 'Keranjang',
+  'contact' => 'contact',
+  'login' => 'Login'
+];
+
+$hlm = isset($hlmList[$uri]) ? $hlmList[$uri] : ucwords($uri);
+
 if(uri_string()!=""){
   $hlm = ucwords(uri_string());
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +65,7 @@ if(uri_string()!=""){
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1><?php echo $hlm ?></h1>
       <nav>
       <ol class="breadcrumb">
   <li class="breadcrumb-item">Home</li>
